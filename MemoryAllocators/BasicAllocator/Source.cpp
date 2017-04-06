@@ -1,7 +1,6 @@
 #include <iostream>
-#include "TestFixedSizedAllocator.h"
+#include "BasicAllocator.h"
 #include "Debug.h"
-
 
 //https://docs.google.com/spreadsheets/d/1bKVzQDfNYuuWYO_aafpt-IXgwAFAKcd_S7wIcL0Xnro/edit?usp=sharing
 
@@ -14,14 +13,14 @@ int main()
 		continueLoop = false;
 	} while (continueLoop);
 	Debug::endTimer();*/
-	Debug::startTimer();
-	for (int i = 0; i < 1000; i++)
-	{
-		Debug::Log("For Loop.");
-	}
-	Debug::endTimerMilli();
 
-	Debug::Log("Just testing this.");
+	Debug::startTimer();
+	BasicAllocator::Init();
+	Debug::endTimerMicro();
+
+	Debug::startTimer();
+	BasicAllocator::Destroy();
+	Debug::endTimerMicro();
 
 	getchar();
 	return 0;

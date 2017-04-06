@@ -13,11 +13,9 @@ enum LogType
 class Debug
 {
 public:
-	Debug();
-	~Debug();
-
 	static void startTimer();
-	static void endTimer();
+	static void endTimerMicro();
+	static void endTimerMilli();
 
 	static void Log(std::string msg, LogType type = Info);
 
