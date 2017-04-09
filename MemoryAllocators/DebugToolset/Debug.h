@@ -3,6 +3,9 @@
 #include <iostream>
 #include <string>
 
+#define TIMER_MICRO(x) {Debug::startTimer(); x; Debug::endTimerMicro();}
+#define TIMER_MILLI(x) {Debug::startTimer(); x; Debug::endTimerMilli();}
+
 enum LogType
 {
 	Info,
