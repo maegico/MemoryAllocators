@@ -53,6 +53,7 @@ int main()
 	DEBUG(Debug::Log("Free Memory: " + std::to_string(BasicAllocator::getFreeMem())));
 	DEBUG(Debug::Log("Used Memory: " + std::to_string(BasicAllocator::getUsedMem())));
 
+	getchar();
 
 	TIMER_MICRO(BasicAllocator::Destroy());
 

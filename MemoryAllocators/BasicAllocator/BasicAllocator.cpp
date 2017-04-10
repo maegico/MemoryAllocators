@@ -21,25 +21,24 @@ void BasicAllocator::Destroy()
 
 void* BasicAllocator::Alloc(void* data, uint32_t size)
 {
-
 	for (uint64_t i = 0; i < MAX_BUFFER_SIZE; i++)
 	{
-		if (*((byte*)MemoryBuffer + i) == NULL || *((int32_t*)MemoryBuffer + i) > 0)
+		int32_t* ptr = (int32_t*)MemoryBuffer + i;
+		if (*ptr == NULL || *ptr > 0)
 		{
-			byte* mem = ((byte*)MemoryBuffer + i);
 			int32_t header = -size;
-			*((int32_t*)MemoryBuffer + i) = header;
-			*(mem + 4) = *(byte*)data;
+			*ptr = header;
+			*(ptr + 1) = *(int32_t*)data;
 
 			//*((byte*)MemoryBuffer + i) = *(byte*)data;
 			usedMem += size + 4;
 			freeMem -= size + 4;
-			return mem+4;
+			return ptr+1;
 		}
-		else if(*((int32_t*)MemoryBuffer + i) < 0)
+		else if(*ptr < 0)
 		{
 			//uint32_t* place = (uint32_t*)MemoryBuffer + i;
-			i -= *((int32_t*)MemoryBuffer + i);
+			i -= *ptr;
 		}
 	}
 	return nullptr;	//place holder
@@ -47,7 +46,7 @@ void* BasicAllocator::Alloc(void* data, uint32_t size)
 
 void BasicAllocator::Dealloc(void* position)
 {
-	int32_t* headerPos = (int32_t*)position - 4;
+	int32_t* headerPos = (int32_t*)position - 1;
 	*headerPos *= -1;
 }
 
