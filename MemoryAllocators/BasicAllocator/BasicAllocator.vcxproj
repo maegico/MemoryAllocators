@@ -148,11 +148,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="BasicAllocator.cpp" />
+    <ClCompile Include="BasicGenericAllocator.cpp" />
+    <ClCompile Include="SingleDataTypeAllocator.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BasicAllocator.h" />
+    <ClInclude Include="BasicGenericAllocator.h" />
+    <ClInclude Include="SingleDataTypeAllocator.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

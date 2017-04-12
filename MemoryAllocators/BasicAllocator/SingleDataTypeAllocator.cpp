@@ -1,12 +1,12 @@
-#include "BasicAllocator.h"
+#include "SingleDataTypeAllocator.h"
 
 typedef unsigned char byte;
 
-void* BasicAllocator::MemoryBuffer;
-uint32_t BasicAllocator::freeMem;
-uint32_t BasicAllocator::usedMem;
+void* SingleDataTypeAllocator::MemoryBuffer;
+uint32_t SingleDataTypeAllocator::freeMem;
+uint32_t SingleDataTypeAllocator::usedMem;
 
-void BasicAllocator::Init()
+void SingleDataTypeAllocator::Init()
 {
 	MemoryBuffer = malloc(MAX_BUFFER_SIZE);
 	memset(MemoryBuffer, 0, MAX_BUFFER_SIZE);
@@ -14,12 +14,12 @@ void BasicAllocator::Init()
 	usedMem = 0;
 }
 
-void BasicAllocator::Destroy()
+void SingleDataTypeAllocator::Destroy()
 {
 	free(MemoryBuffer);
 }
 
-void* BasicAllocator::Alloc(void* data, uint32_t size)
+void* SingleDataTypeAllocator::Alloc(void* data, uint32_t size)
 {
 	for (uint64_t i = 0; i < MAX_BUFFER_SIZE;)
 	{
@@ -46,23 +46,23 @@ void* BasicAllocator::Alloc(void* data, uint32_t size)
 	return nullptr;	//place holder
 }
 
-void BasicAllocator::Dealloc(void* position)
+void SingleDataTypeAllocator::Dealloc(void* position)
 {
 	int32_t* headerPos = (int32_t*)position - 1;
 	*headerPos *= -1;
 }
 
-uint32_t BasicAllocator::getFreeMem()
+uint32_t SingleDataTypeAllocator::getFreeMem()
 {
 	return freeMem;
 }
 
-uint32_t BasicAllocator::getUsedMem()
+uint32_t SingleDataTypeAllocator::getUsedMem()
 {
 	return usedMem;
 }
 
-void BasicAllocator::showMem(void* position)
+void SingleDataTypeAllocator::showMem(void* position)
 {
 	for (int i = 0; i < 4; i++)
 	{

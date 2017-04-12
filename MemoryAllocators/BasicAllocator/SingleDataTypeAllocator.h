@@ -13,7 +13,7 @@
 #define MEM_HEADER_SIZE 2			//in bytes
 #define PROBLEM 263152
 
-class BasicAllocator
+class SingleDataTypeAllocator
 {
 public:
 	static void Init();
