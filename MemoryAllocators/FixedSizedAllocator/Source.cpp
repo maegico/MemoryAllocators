@@ -14,7 +14,7 @@ int main()
 		continueLoop = false;
 	} while (continueLoop);
 	Debug::endTimer();*/
-	Debug::startTimer();
+	/*Debug::startTimer();
 	for (int i = 0; i < 1000; i++)
 	{
 		Debug::Log("For Loop.");
@@ -22,6 +22,12 @@ int main()
 	Debug::endTimerMilli();
 
 	Debug::Log("Just testing this.");
+*/
+
+	for (int i = 0; i < 30; i++)
+	{
+		printf("Remainder is of %d is %d.\n", i, i % 2);
+	}
 
 	getchar();
 	return 0;

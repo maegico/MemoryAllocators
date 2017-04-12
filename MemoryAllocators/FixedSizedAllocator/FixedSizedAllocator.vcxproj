@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{D2814948-144F-4ABD-B237-B55AF4568F95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>MemoryAllocators</RootNamespace>
+    <RootNamespace>FixedSizedAllocator</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
     <ProjectName>FixedSizedAllocator</ProjectName>
   </PropertyGroup>

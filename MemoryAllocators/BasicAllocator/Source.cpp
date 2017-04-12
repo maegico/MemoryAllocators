@@ -14,10 +14,10 @@ struct Testing
 	bool test2;
 	bool test3;
 	bool test4;
-	/*bool test5;
+	bool test5;
 	bool test6;
 	bool test7;
-	bool test8;*/
+	bool test8;
 };
 
 void SingleDataTypeAllocatorTesting();
@@ -34,7 +34,9 @@ int main()
 		continueLoop = false;
 	} while (continueLoop);
 	Debug::endTimer();*/
-
+	int* data;
+	TIMER_MICRO(data = (int*)malloc(sizeof(int)));
+	printf("Break\n");
 	//SingleDataTypeAllocatorTesting();
 	BasicGenericAllocatorTesting();
 
@@ -74,7 +76,7 @@ void SingleDataTypeAllocatorTesting()
 	//printf("Data is %d\n", *dataPtr);*/
 
 	float* data3Ptr;
-	TIMER_MICRO(data3Ptr = (float*)SingleDataTypeAllocator::Alloc(&data3, sizeof(data3)));
+	TIMER_NANO(data3Ptr = (float*)SingleDataTypeAllocator::Alloc(&data3, sizeof(data3)));
 	printf("Float Ptr is: %d\n", data3Ptr);
 	printf("Float is %f\n", *data3Ptr);
 
@@ -97,16 +99,16 @@ void BasicGenericAllocatorTesting()
 	int data = 52;
 	int secondData = 78;
 	float data3 = 0.5f;
-	Testing t = { false, true, false, false };
+	Testing t = { false, true, false, false, false, true, false, false };
 
 	int* dataPtr;
-	TIMER_MICRO(dataPtr = BasicGenericAllocator::Alloc<int>(secondData));
+	TIMER_NANO(dataPtr = BasicGenericAllocator::Alloc<int>(secondData));
 
 	float* data3Ptr;
-	TIMER_MICRO(data3Ptr = BasicGenericAllocator::Alloc<float>(data3));
+	TIMER_NANO(data3Ptr = BasicGenericAllocator::Alloc<float>(data3));
 	
 	Testing* tPtr;
-	TIMER_MICRO(tPtr = BasicGenericAllocator::Alloc<Testing>(t));
+	TIMER_NANO(tPtr = BasicGenericAllocator::Alloc<Testing>(t));
 	
 	printf("Float Ptr is: %d\n", data3Ptr);
 	printf("Float is %f\n", *data3Ptr);
@@ -117,10 +119,10 @@ void BasicGenericAllocatorTesting()
 	printf("BOOL 2: %d\n", tPtr->test2);
 	printf("BOOL 3: %d\n", tPtr->test3);
 	printf("BOOL 4: %d\n", tPtr->test4);
-	/*printf("BOOL 5: %d\n", tPtr->test5);
+	printf("BOOL 5: %d\n", tPtr->test5);
 	printf("BOOL 6: %d\n", tPtr->test6);
 	printf("BOOL 7: %d\n", tPtr->test7);
-	printf("BOOL 8: %d\n", tPtr->test8);*/
+	printf("BOOL 8: %d\n", tPtr->test8);
 
 	//BasicGenericAllocator::showMem(nullptr);
 

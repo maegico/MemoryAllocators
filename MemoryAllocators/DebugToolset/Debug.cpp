@@ -7,6 +7,15 @@ void Debug::startTimer()
 	time = std::chrono::high_resolution_clock::now();
 }
 
+void Debug::endTimerNano()
+{
+	auto originalTime = time;
+	time = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(time - originalTime).count();
+
+	printf("Total Time Required: %lld nanoseconds.\n", duration);
+}
+
 void Debug::endTimerMicro()
 {
 	auto originalTime = time;

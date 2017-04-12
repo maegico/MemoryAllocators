@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 
+#define TIMER_NANO(x) {Debug::startTimer(); x; Debug::endTimerNano();}
 #define TIMER_MICRO(x) {Debug::startTimer(); x; Debug::endTimerMicro();}
 #define TIMER_MILLI(x) {Debug::startTimer(); x; Debug::endTimerMilli();}
 
@@ -17,6 +18,7 @@ class Debug
 {
 public:
 	static void startTimer();
+	static void endTimerNano();
 	static void endTimerMicro();
 	static void endTimerMilli();
 
